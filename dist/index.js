@@ -11,11 +11,13 @@ async function startServer() {
         typeDefs: `#graphql
     type Query{
         getUser:String
+        printName(name:String):String
     }
 `,
         resolvers: {
             Query: {
                 getUser: () => "Shahvez",
+                printName: (parent, { name: String }) => `hello ${name}!, how are you`
             },
         },
     });
