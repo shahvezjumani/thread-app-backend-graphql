@@ -1,4 +1,3 @@
-// import { Query } from "./../node_modules/@types/express-serve-static-core/index.d";
 import { ApolloServer } from "@apollo/server";
 import { expressMiddleware } from "@as-integrations/express5";
 // import cors from "cors";
@@ -14,11 +13,13 @@ async function startServer() {
     typeDefs: `#graphql
     type Query{
         getUser:String
+        printName(name:String):String
     }
 `,
     resolvers: {
       Query: {
         getUser: () => "Shahvez",
+        printName: (parent,{name:String}) => `hello ${name}!, how are you`
       },
     },
   });
